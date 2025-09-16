@@ -1,11 +1,11 @@
 var cancellable = function(fn, args, t) {
-    let i = 0;
-    let timeout = 0;
+    let i = 1;
     let timeouts = [];
-    while (timeout < 6 * t){
-        let timeId = setTimeout(() => fn(...args), timeout);
+    fn(...args);
+    while (i <= 6){
+        let timeId = setTimeout(() => fn(...args), t * i);
         timeouts.push(timeId);
-        timeout += t;
+        i++;
     }
     
         return () =>{
